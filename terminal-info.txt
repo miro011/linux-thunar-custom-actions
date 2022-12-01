@@ -1,0 +1,13 @@
+DEPENDIENCIES:
+mate-terminal
+
+CUSTOM ACTION:
+
+[Basic]
+Name: Terminal
+Description: Open a terminal in the current folder
+Command: mate-terminal --name "thunar" --title "TERMINAL" --working-directory %f
+
+[Appearance Conditions]
+File Pattern: *
+Appears if selection contains: Directories
