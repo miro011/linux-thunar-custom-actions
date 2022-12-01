@@ -1,0 +1,10 @@
+CUSTOM ACTION:
+
+[Basic]
+Name: Thunar Sudo
+Description: Launch thunar as sudo
+Command: pkexec thunar %f
+
+[Appearance Conditions]
+File Pattern: *
+Appears if selection contains: Directories
