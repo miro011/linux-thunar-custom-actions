@@ -7,3 +7,6 @@ My thunar custom actions
 - Put the script you want to add in /usr/local/bin/Thunar
 - The "-info.txt" file contains the command needed for the custom action to work and other attributes
   - It also contains the required dependencies, if any
+  
+- Feel free to assign custom keyboard shortcuts and icons to your custom actions
+- Thunar saves your custom actions config in ~/.config/Thunar in files "uca.xml" (custom actions), and "accels.scm" (keyboard shortcuts)
