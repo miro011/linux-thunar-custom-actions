@@ -2,7 +2,7 @@ DEPENDIENCIES:
 python3, unar, unrar, mate-terminal
 
 RECCOMENDED:
-uninstall thunar archive plugin
+uninstall thunar-archive-plugin
 use file-roller to preview archives without extracting them
 
 CUSTOM ACTION 1:
