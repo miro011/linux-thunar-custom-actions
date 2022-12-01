@@ -1,5 +1,5 @@
 DEPENDIENCIES:
-python3, unar, unrar, mate-terminal
+python3, mate-terminal, unar >= 1.10.7, unrar >= 6.11
 
 RECCOMENDED:
 uninstall thunar-archive-plugin
