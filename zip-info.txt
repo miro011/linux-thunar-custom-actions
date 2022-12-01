@@ -1,6 +1,9 @@
 DEPENDIENCIES:
 python3, mate-terminal, zip
 
+RECCOMENDED:
+uninstall thunar-archive-plugin
+
 CUSTOM ACTION:
 
 [Basic]
