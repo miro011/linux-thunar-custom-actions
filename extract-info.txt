@@ -1,0 +1,26 @@
+DEPENDIENCIES:
+python3, unar, unrar, mate-terminal
+
+
+CUSTOM ACTION 1:
+
+[Basic]
+Name: Extract Inner
+Description: Extract here
+Command: mate-terminal --name "thunar" --title "EXTRACTING IN %d" -- python3 "/usr/local/bin/Thunar/extract.py" "inner" %F
+
+[Appearance Conditions]
+File Pattern: *.rar;*.RAR;*.zip;*.ZIP;*.7z;*.tar.gz;*.tar.bz2;*.tar.xz;*.zipx
+Appears if selection contains: Other files
+
+
+CUSTOM ACTION 2:
+
+[Basic]
+Name: Extract Outer
+Description: Extract each to seperate folder
+Command: mate-terminal --name "thunar" --title "EXTRACTING IN %d" -- python3 "/usr/local/bin/Thunar/extract.py" "outer" %F
+
+[Appearance Conditions]
+File Pattern: *.rar;*.RAR;*.zip;*.ZIP;*.7z;*.tar.gz;*.tar.bz2;*.tar.xz;*.zipx
+Appears if selection contains: Other files
