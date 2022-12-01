@@ -1,5 +1,5 @@
 DEPENDIENCIES:
-python3, rsync
+python3, rsync, mate-terminal
 
 CUSTOM ACTION:
 
