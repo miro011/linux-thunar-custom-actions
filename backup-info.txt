@@ -1,0 +1,13 @@
+DEPENDIENCIES:
+python3, rsync
+
+CUSTOM ACTION:
+
+[Basic]
+Name: Backup
+Description: Perform a backup of a given directory using rsync
+Command: mate-terminal --name "thunar" --title "BACKUP: %f" -- python3 "/usr/local/bin/Thunar/backup.py" %f
+
+[Appearance Conditions]
+File Pattern: *
+Appears if selection contains: Directories
