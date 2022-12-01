@@ -1,0 +1,13 @@
+DEPENDIENCIES:
+dolphin
+
+CUSTOM ACTION:
+
+[Basic]
+Name: Search with Dolphin
+Description: Search with Dolphin
+Command: dolphin %f
+
+[Appearance Conditions]
+File Pattern: *
+Appears if selection contains: Directories
