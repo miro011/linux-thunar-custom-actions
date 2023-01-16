@@ -1,4 +1,4 @@
-# thunar-custom-actions-miro
+# thunar-custom-actions
 My thunar custom actions
 - -----------------------------------------------
 - Each custom action has a script file (.py/.sh) and an "-info.txt" file 
