@@ -1,0 +1,13 @@
+DEPENDIENCIES:
+python3, mate-terminal
+
+CUSTOM ACTION:
+
+[Basic]
+Name: Fix Invalid Chars
+Description: Reaplces invalid NTFS characters in filenames
+Command: mate-terminal --name "thunar" --title "FIX INVALID CHARS: %f" -- python3 "/usr/local/bin/Thunar/invalid-chars-fixer.py" %f
+
+[Appearance Conditions]
+File Pattern: *
+Appears if selection contains: Directories
