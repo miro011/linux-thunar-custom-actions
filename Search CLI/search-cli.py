@@ -139,6 +139,7 @@ def search_results():
 
     print(RESULTS_MSG)
 
+    #input(generate_find_command())
     result = subprocess.getoutput(generate_find_command())
     if result == "":
         search_text_uin(True)
@@ -163,7 +164,7 @@ def search_results():
 def generate_find_command():
     formattedSearchText = sq(SEARCH_TEXT).replace("*", "\*") # escpate single quotes and stars
 
-    cmd = f"find {START_DIR} -mindepth 1 " # -mindepth 1 excludes the dir you're searching from the results
+    cmd = f"find '{sq(START_DIR)}' -mindepth 1 " # -mindepth 1 excludes the dir you're searching from the results
 
     if "n" in SEARCH_ARGS: cmd += "-maxdepth 1 "
 
