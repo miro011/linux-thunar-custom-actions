@@ -1,0 +1,10 @@
+CUSTOM ACTION:
+
+[Basic]
+Name: Wallpaper GNOME
+Description: Set image as wallpaper for GNOME
+Command: bash /usr/local/bin/Thunar/set-gnome-wallpaper.sh %f
+
+[Appearance Conditions]
+File Pattern: *
+Appears if selection contains: Image Files
