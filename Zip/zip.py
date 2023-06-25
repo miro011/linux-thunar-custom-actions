@@ -104,6 +104,12 @@ errors = ""
 zipFileCounter = 1
 for zipName in zipsDict:
     os.system("clear")
+    if zipMethod == "single":
+        print(f"Adding files to {zipName}")
+    else:
+        sys.stdout.write(f"\x1b]2;Zip {zipFileCounter}/{len(zipsDict)}\x07") # changes terminal title
+        print(f"Zip {zipFileCounter}/{len(zipsDict)}")
+
     print(f"Adding files to {zipName}") if zipMethod == "single" else print(f"Working on zip file {zipFileCounter}/{len(zipsDict)}")
     cmdToRun = "zip -q -r "
     if password: cmdToRun += f"--password '{sq(password)}' "
@@ -116,3 +122,4 @@ if errors:
     os.system("clear")
     print(errors)
     input("PRESS ENTER TO EXIT")
+

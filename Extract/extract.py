@@ -61,7 +61,9 @@ def extract():
             if not os.path.exists(filePath): ERRORS += f"{os.path.basename(filePath)}:\nFile removed before extraction began\n\n"; continue
             os.system("clear")
             empty_temp()
-            print(f"EXTRACTING: {counter}/{len(FILE_PATHS_ARR)}")
+            
+            sys.stdout.write(f"\x1b]2;Extr {counter}/{len(FILE_PATHS_ARR)}\x07") # changes terminal title
+            print(f"Extr {counter}/{len(FILE_PATHS_ARR)}")
 
             extractCmdOutput = subprocess.run(generate_extract_command(filePath), shell=True, text=True, capture_output=True)
             errMsg = extractCmdOutput.stderr.strip()
@@ -185,3 +187,4 @@ def sq(str):
 
 
 run()
+

@@ -24,11 +24,11 @@ RESULTS_COLORS_DICT = {"d":FONT_OR, "dl":FONT_YE, "f":FONT_BU, "fl":FONT_CY}
 #.........................................................
 # MESSAGES
 
-SEARCH_MSG = f"{FONT_BOLD}{FONT_UL}SEARCH{FONT_DF} (/[d|f][s|e][c][n] searchText) (/h for help)"
+SEARCH_MSG = f"{FONT_BOLD}{FONT_UL}SEARCH{FONT_DF} /help | /[df][se][c][n] searchText"
 
 RESULTS_MSG = f"\n{FONT_BOLD}{FONT_UL}RESULTS{FONT_DF} {RESULTS_COLORS_DICT['d']}dir {RESULTS_COLORS_DICT['dl']}dir-link {RESULTS_COLORS_DICT['f']}file {RESULTS_COLORS_DICT['fl']}file-link{FONT_DF}"
 
-SELECTION_MSG = f"\n{FONT_BOLD}{FONT_UL}SELECT{FONT_DF} (r || d|o|s nums || c|m[s|r|o] nums /out) (/out=>/rr=relroot, [s|r|o]=>r=df)"
+SELECTION_MSG = f"\n{FONT_BOLD}{FONT_UL}SELECT{FONT_DF} r | (dos) nums | (cm)[sro] nums /outputDir"
 
 #.........................................................
 # REGEX
@@ -88,23 +88,22 @@ def search_text_uin(prevSearchNoResults=False, usePrevInput=False):
 
         userInput = input(f"{FONT_PR}INPUT:{FONT_DF}")
 
-        if userInput == "/h":
+        if userInput == "/help":
             show_help_msg()
             continue
 
         if userInput == "":
-            print(f"{FONT_RD}Invalid input, try again.{FONT_DF}")
+            print(f"{FONT_RD}Empty search query, try again.{FONT_DF}")
             continue
 
         if re.match(SEARCH_WITH_ARGS_REGEX, userInput):
             SEARCH_ARGS = userInput.split(" ")[0]
             SEARCH_TEXT = " ".join(userInput.split(" ")[1:])
+        elif "/" in SEARCH_TEXT:
+            print(f"{FONT_RD}Search text can't include forward slash (or invalid parameters used), try again.{FONT_DF}")
+            continue
         else:
             SEARCH_TEXT = userInput
-
-        if "/" in SEARCH_TEXT:
-            print(f"{FONT_RD}Search text can't include forward slash, try again.{FONT_DF}")
-            continue
 
         break
         
@@ -113,21 +112,24 @@ def search_text_uin(prevSearchNoResults=False, usePrevInput=False):
 def show_help_msg():
     msg = f"{FONT_BOLD}SEARCH PARAMS{FONT_DF}\n"
     msg += "Preceeded by forward-slash at the begining, followed by space and the search string\n"
-    msg += "/[d|f][s|e][c][n][h] searchText\n"
-    msg += "d = search only directories, f = search only files (df: any)\n"
-    msg += "s = starts with, e = ends with (df: contains)\n"
-    msg += "c = case-sensitive (df: insensitive)\n"
-    msg += "n = non-recursive (df: recursive)\n\n"
+    msg += "Not providing an option means the default will be used\n"
+    msg += "One parameter per group\n"
+    msg += "/[df][se][c][n] searchText\n"
+    msg += "d = search only directories | f = search only files (default: any)\n"
+    msg += "s = starts with | e = ends with (default: contains)\n"
+    msg += "c = case-sensitive (default: insensitive)\n"
+    msg += "n = non-recursive (default: recursive)\n\n"
 
     msg += f"{FONT_BOLD}SELECT{FONT_DF}\n"
+    msg += "If something is in brackets, it is manditory, if it's in square brackets, it's optional.\n"
     msg += "FORMAT1: r\n"
     msg += "r = restart\n"
-    msg += "FORMAT2: d|o|s nums\n"
+    msg += "FORMAT2: (dos) nums\n"
     msg += "d = delete, o = open, s = show in thunar\n"
-    msg += "FORMAT3: c|m[s|r|o] nums /out\n"
-    msg += "c = copy, m = move\n"
-    msg += "s = skip, r = rename (df), o = overwrite\n"
-    msg += "if can use /rr in the output directory to refer to refer to the folder in which you're searching\n"
+    msg += "FORMAT3: (cm)[sro] nums /outputDir\n"
+    msg += "action: c = copy, m = move\n"
+    msg += "duplucate action: s = skip, r = rename (defailt), o = overwrite\n"
+    msg += "Use '/rr' (relative root) for the output directory to refer to the folder in which you're searching\n"
     msg += "NOTE: The numbers you select need to be seperated by space if multiple. Ranges are allowed too (ex. 1 3-6 9)"
 
     os.system(f"mate-terminal --name 'thunar' --title 'SEARCH INSTRUCTIONS' -- sh -c 'printf \"{sq(msg)}\"; echo \"\"; echo \"\"; read -p \"PRESS ENTER TO CLOSE\" hold;' > /dev/null 2>&1")
