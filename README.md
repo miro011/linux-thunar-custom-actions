@@ -1,4 +1,7 @@
 # thunar-custom-actions
+
+![preview image](preview.png?raw=true "preview")
+
 My thunar custom actions
 - -----------------------------------------------
 - Each custom action has a script file (.py/.sh) and an "-info.txt" file 
